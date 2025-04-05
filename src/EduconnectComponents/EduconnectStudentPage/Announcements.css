@@ -1,0 +1,102 @@
+#EduAncmnt-Logo-row {
+  height: 70px;
+  background-color: black;
+}
+#EduAncmnt-Logo-col {
+  cursor: pointer;
+  color: white;
+  /* font-family: "Montserrat", serif;
+      font-weight: 700;
+      font-style: normal;
+      font-size: 25px; */
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+  letter-spacing: 1.2px;
+  /* background: radial-gradient(
+        circle,
+        rgba(2, 0, 36, 1) 10%,
+        rgba(9, 9, 117, 1) 44%,
+        rgba(9, 9, 121, 1) 55%,
+        rgba(8, 39, 141, 1) 72%,
+        rgba(7, 62, 156, 1) 78%,
+        rgba(6, 82, 169, 1) 86%,
+        rgba(2, 160, 221, 1) 98%,
+        rgba(0, 212, 255, 1) 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; */
+}
+#EduAncmnt-Anctitle-row {
+  height: 70px;
+  background-color: black;
+}
+#EduAncmnt-Anctitle-col {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  color: white;
+}
+#Anc-main {
+  min-height: 100vh;
+  background-color: black;
+}
+#announcement-list {
+  gap: 15px;
+  padding-top: 35px;
+}
+#Ancmnt-each-card-main {
+  width: 100%;
+  transition: width 0.3s ease, box-shadow 0.3s ease;
+}
+#Ancmnt-each-card-main:hover {
+  width: 102%;
+  box-shadow: 0 0 25px 1px #ff8c00;
+}
+#Ancmnt-each-card-title {
+  font-family: "Poppins", serif;
+}
+#Ancmnt-each-card-body {
+  font-family: "Poppins", serif;
+}
+#Ancmnt-each-card-posted {
+  font-family: "Poppins", serif;
+}
+#Ancmnt-each-card-by {
+  font-family: "Poppins", serif;
+}
+/* Loading message styles */
+.loading-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #00d1b2; /* Teal */
+}
+
+/* Error message styles */
+.error-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ff3860; /* Red error color */
+}
+
+#EduAncmnt-footer-row {
+  height: 70px;
+  background-color: black;
+}
+#EduAncmnt-footer-col {
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 12px;
+  color: white;
+  opacity: 0.7;
+}
+#EduAnc-NoAnc{
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 20px;
+  color: white;
+}

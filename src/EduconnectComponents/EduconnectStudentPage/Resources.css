@@ -1,0 +1,108 @@
+/* Resources.css */
+#EduconnectHS-main {
+  box-sizing: border-box;
+}
+#EduRes-Logo-row {
+  height: 70px;
+  background-color: black;
+}
+#EduRes-Logo-col {
+  cursor: pointer;
+  color: white;
+  /* font-family: "Montserrat", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 25px; */
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+  letter-spacing: 1.2px;
+  /* background: radial-gradient(
+      circle,
+      rgba(2, 0, 36, 1) 10%,
+      rgba(9, 9, 117, 1) 44%,
+      rgba(9, 9, 121, 1) 55%,
+      rgba(8, 39, 141, 1) 72%,
+      rgba(7, 62, 156, 1) 78%,
+      rgba(6, 82, 169, 1) 86%,
+      rgba(2, 160, 221, 1) 98%,
+      rgba(0, 212, 255, 1) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+#ResCard-main {
+  min-height: 100vh;
+  background-color: #000000;
+}
+/* .resources-container {
+  min-height: 100vh;
+  background-color: #000000;
+} */
+#EducRes-Title {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-size: 30px;
+  color: white;
+}
+#ResCard-title{
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-size: 25px;
+  color: black;
+}
+#ResCard-Description{
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: black;
+}
+#ResCard-Upload{
+  font-family: "Poppins", serif;
+  font-weight: 400;
+}
+#ResCard-btn-download{
+  font-family: "Poppins", serif;
+  font-weight: 300;
+}
+#ResCard-btn-view{
+  font-family: "Poppins", serif;
+  font-weight: 300;
+}
+#EduRes-footer-row{
+  height: 70px;
+  background-color: black;
+}
+#EduRes-footer-col{
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 12px;
+  color: white;
+  opacity: 0.7;
+}
+/* Loading spinner styles */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000000;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

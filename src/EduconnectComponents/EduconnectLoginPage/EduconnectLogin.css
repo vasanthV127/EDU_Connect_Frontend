@@ -1,0 +1,104 @@
+#EdcLogin-Main-Row-1 {
+  height: 100vh;
+  background-color: black;
+}
+#EdcLogin-Main-col-1 {
+  background-image: url("./EDC-BG-4.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+  margin: 10px;
+}
+#Edc-Logo {
+  color: whitesmoke;
+  mix-blend-mode: difference;
+  font-family: "Montserrat", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 22px;
+  padding-top: 10px;
+  padding-left: 10px;
+  letter-spacing: 1.5px;
+}
+#EdcLogin-Main-col-2 {
+  margin: 10px;
+}
+#Edc-Login-form p {
+  color: white;
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 30px;
+}
+#Edc-Login-form #Edc-tagline {
+  color: rgb(146, 146, 146);
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 15px;
+}
+#Edc-email-input {
+  padding: 10px 20px 10px 20px;
+  border: 1px white solid;
+  color: white;
+  background-color: black;
+  margin-bottom: 20px;
+  border-radius: 50px;
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+  width: 400px;
+}
+#Edc-pass-input {
+  border: 1px white solid;
+  color: white;
+  background-color: black;
+  padding: 10px 20px 10px 20px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+  width: 400px;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px black inset !important;
+  -webkit-text-fill-color: white !important;
+}
+
+@media (max-width: 425px) {
+  #Edc-email-input {
+    width: 280px;
+  }
+  #Edc-pass-input {
+    width: 280px;
+  }
+}
+#Edc-email-input:focus {
+  outline: none;
+}
+#Edc-pass-input:focus {
+  outline: none;
+}
+#Edc-button {
+  border: 1px white solid;
+  padding: 9px 20px;
+  border-radius: 50px;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  transition: cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
+}
+#Edc-button:hover {
+  color: white;
+  background-color: black;
+  border: 1px white solid;
+}
+.fa-eye,
+.fa-eye-slash {
+  color: white;
+}

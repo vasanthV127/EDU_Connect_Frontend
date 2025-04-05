@@ -1,0 +1,169 @@
+#EduResourceUpload-Logo-row {
+    height: 70px;
+    background-color: black;
+  }
+  
+  #EduResourceUpload-Logo-col {
+    cursor: pointer;
+    color: white;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 32px;
+    letter-spacing: 1.2px;
+  }
+  
+  #EduResourceUpload-title {
+    font-family: "Poppins", serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 30px;
+    color: white;
+    padding-bottom: 10px;
+  }
+  
+  #resourceupload-main {
+    background-color: black;
+    animation: fadeIn 0.5s ease-out;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .resource-upload {
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    border: 1px solid white;
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 25px;
+    text-align: center;
+  }
+  
+  .resource-upload form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .resource-upload input,
+  .resource-upload textarea,
+  .resource-upload select {
+    padding: 12px;
+    border-radius: 4px;
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    color: #e0e0e0;
+    border: none;
+    background-color: #2d2d2d;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  .resource-upload select.resource-select {
+    background-color: #2d2d2d;
+    cursor: pointer;
+  }
+  
+  .resource-upload textarea {
+    min-height: 150px;
+    resize: none;
+  }
+  
+  .resource-upload button {
+    padding: 12px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+    font-size: 16px;
+  }
+  
+  .resource-upload button:hover {
+    background-color: #666;
+  }
+  
+  .resource-upload h2 {
+    color: #e0e0e0;
+  }
+  
+  /* Loading and error message styles */
+  .resource-upload div {
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #e0e0e0;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  /* Footer */
+  #EduResourceUpload-footer-row {
+    height: 70px;
+    background-color: black;
+  }
+  
+  #EduResourceUpload-footer-col {
+    font-family: "Poppins", serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 12px;
+    color: white;
+    opacity: 0.7;
+  }
+
+  /* Button Container to maintain consistent size */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px; /* Matches the button height */
+    width: 100%;
+  }
+  
+  /* Loading Animation Styles */
+  .loading-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%; /* Fills the button-container */
+  }
+  
+  .spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #ffffffaa;
+    border-top: 3px solid #6a11cb;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Ensure button has consistent dimensions */
+  .resource-upload button {
+    width: 100%;
+    max-width: 200px;
+    height: 48px; /* Fixed height to match the container */
+    box-sizing: border-box;
+  }
+  

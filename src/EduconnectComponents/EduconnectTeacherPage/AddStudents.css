@@ -1,0 +1,149 @@
+#EduBulkSignup-Logo-row {
+  height: 70px;
+  background-color: black;
+}
+
+#EduBulkSignup-Logo-col {
+  cursor: pointer;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+  letter-spacing: 1.2px;
+}
+
+#EduBulkSignup-title {
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 30px;
+  color: white;
+  padding-bottom: 10px;
+}
+
+#bulkSignup-main {
+  background-color: black;
+  animation: fadeIn 0.5s ease-out;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bulk-signup {
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  border: 1px solid white;
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.bulk-signup form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.student-entry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.bulk-signup input {
+  padding: 12px;
+  border-radius: 4px;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #e0e0e0;
+  border: none;
+  background-color: #2d2d2d;
+  font-size: 16px;
+  flex: 1;
+}
+
+.bulk-signup input[type="file"] {
+  background-color: #2d2d2d;
+  color: #e0e0e0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.bulk-signup button {
+  padding: 12px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.bulk-signup button:hover {
+  background-color: #666;
+}
+
+.bulk-signup h2 {
+  color: #e0e0e0;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 100%;
+}
+
+/* Loading Animation Styles */
+.loading-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #ffffffaa;
+  border-top: 3px solid #6a11cb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Footer */
+#EduBulkSignup-footer-row {
+  height: 70px;
+  background-color: black;
+}
+
+#EduBulkSignup-footer-col {
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 12px;
+  color: white;
+  opacity: 0.7;
+}

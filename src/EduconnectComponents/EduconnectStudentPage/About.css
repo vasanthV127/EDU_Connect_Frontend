@@ -1,0 +1,111 @@
+#EduconnectHS-main {
+    box-sizing: border-box;
+  }
+  #EducAbout-Logo-row {
+    height: 70px;
+    background-color: black;
+  }
+  #EducAbout-Logo-col {
+    cursor: pointer;
+    color: white;
+    /* font-family: "Montserrat", serif;
+      font-weight: 700;
+      font-style: normal;
+      font-size: 25px; */
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 32px;
+    letter-spacing: 1.2px;
+    /* background: radial-gradient(
+        circle,
+        rgba(2, 0, 36, 1) 10%,
+        rgba(9, 9, 117, 1) 44%,
+        rgba(9, 9, 121, 1) 55%,
+        rgba(8, 39, 141, 1) 72%,
+        rgba(7, 62, 156, 1) 78%,
+        rgba(6, 82, 169, 1) 86%,
+        rgba(2, 160, 221, 1) 98%,
+        rgba(0, 212, 255, 1) 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; */
+  }
+  #EducAbout-Back-Home-link {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+  }
+  #EducAbout-Back-Home-link:hover {
+    /* background-color: #222222; */
+    /* background-color: #1a1a1a; */
+    border-radius: 15px;
+    background: linear-gradient(to right, #333333, #222222);
+    box-shadow: 0 0 10px #00d9ff;
+  }
+  #EducAbout-Header-row {
+    background-color: black;
+  }
+  #EducAbout-Header-col {
+    min-height: 100vh;
+  }
+  #EducAbout-Header #Title {
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+  }
+  /* #EducAbout-Content {
+    background-image: url("./EDC-BG-3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 25px;
+  } */
+  #EducAbout-Content #EducAbout-Sub-Content-1 {
+    font-family: "Poppins", serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: white;
+  }
+  #EducAbout-Content #EducAbout-Sub-Content-2 {
+    font-family: "Poppins", serif;
+    font-weight: 200;
+    font-size: 17px;
+    color: white;
+  }
+  #EducAbout-Developers-Header #Dev-Title {
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-size: 25px;
+    color: white;
+  }
+  #Educ-footer-About-col {
+    font-family: "Poppins", serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 12px;
+    color: white;
+    opacity: 0.7;
+  }
+  @media (min-width: 768px) {
+    #EducAbout-Content #EducAbout-Sub-Content-1 {
+      padding-right: 150px;
+      padding-left: 150px;
+    }
+    #EducAbout-Content #EducAbout-Sub-Content-2 {
+      padding-right: 150px;
+      padding-left: 150px;
+    }
+  }
+  
+  /* background-image: url("./EDC-BG-3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; */
+  

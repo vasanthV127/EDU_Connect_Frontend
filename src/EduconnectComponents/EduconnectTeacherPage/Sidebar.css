@@ -1,0 +1,152 @@
+/* Sidebar Container */
+#edu-sidebar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 90px;
+    background-color: black;
+    box-shadow: 2px 0 5px rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    border-left: none;
+  }
+  
+  /* Logo */
+  #edu-logo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+  .sidebar-logo {
+    max-width: 60px;
+  }
+  
+  /* Sidebar Links */
+  #edu-nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Sidebar link */
+  .sidebar-link {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Icon */
+  .sidebar-icon {
+    min-width: 30px;
+  }
+  .sidebar-link:hover {
+    border-radius: 15px;
+    background: linear-gradient(to right, #333333, #222222);
+    box-shadow: 0 0 10px #00d9ff;
+  }
+  
+  /* Text Tooltip (Hidden by Default) */
+  .sidebar-text {
+    position: absolute;
+    left: 90px;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 14px;
+    display: none;
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-size: 15px;
+    z-index: 1000;
+  }
+  
+  /* Show text on hover */
+  .sidebar-link:hover .sidebar-text {
+    display: block;
+    background-color: #eeeeee;
+  }
+  
+  #edu-footer-section {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    flex-direction: column;
+  }
+  
+  .profile-avatar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-avatar .MuiAvatar-root {
+    margin-right: 0px;
+  }
+  
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+  }
+  
+  #edu-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  #edu-close-btn {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 1500px) {
+    #edu-sidebar-container {
+      transform: translateX(-100%);
+      z-index: 1000;
+    }
+  
+    #edu-sidebar-container.visible {
+      transform: translateX(0);
+    }
+  
+    #edu-menu-toggle {
+      display: block;
+    }
+  
+    #edu-close-btn {
+      display: block;
+    }
+    
+    #edu-logo-section {
+      padding-top: 50px;
+    }
+  }

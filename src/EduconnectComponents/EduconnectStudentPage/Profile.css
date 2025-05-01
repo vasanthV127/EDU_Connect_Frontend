@@ -49,6 +49,7 @@
 #User-Profile-Pic{
   background: linear-gradient(135deg, #ffaee8 30%, #a3bff0 80%);
   border-radius: 8px;
+  cursor: pointer;
 }
 #User-Profile-Picture {
   cursor: pointer;

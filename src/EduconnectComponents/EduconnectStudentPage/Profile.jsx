@@ -12,11 +12,12 @@ import { Card, ListGroup } from "react-bootstrap";
 import { PersonOutline, EmailOutlined } from "@mui/icons-material";
 
 const gradients = [
-  { name: "Sunset", colors: "linear-gradient(135deg, #ff7eb3, #ff758c)" },
-  { name: "Ocean Blue", colors: "linear-gradient(135deg, #2193b0, #6dd5ed)" },
-  { name: "Purple Haze", colors: "linear-gradient(135deg, #8e2de2, #4a00e0)" },
-  { name: "Green Bliss", colors: "linear-gradient(135deg, #11998e, #38ef7d)" },
-  { name: "Fiery Red", colors: "linear-gradient(135deg, #ff416c, #ff4b2b)" },
+  "linear-gradient(135deg, #ff758c 20%, #ff7eb3 80%)",
+  "linear-gradient(135deg, #667eea 20%, #764ba2 80%)",
+  "linear-gradient(135deg, #fcd3ff 20%, #d0e3ff 80%)",
+  "linear-gradient(135deg, #ff9a9e 30%, #fad0c4 70%)",
+  "linear-gradient(135deg, #a8edea 20%, #fed6e3 80%)",
+  "linear-gradient(135deg, #283048 30%, #859398 80%);",
 ];
 
 const Profile = () => {
@@ -33,7 +34,13 @@ const Profile = () => {
   const [notification, setNotification] = useState(null);
 
   //New - Added Lines - Start
-  const [selectedGradient, setSelectedGradient] = useState(gradients[0].colors);
+  const [selectedGradient, setSelectedGradient] = useState(gradients[0]);
+
+  const changeGradient = () => {
+    const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+    setSelectedGradient(randomGradient);
+  };
+
   const [image, setImage] = useState(PIC); // Default image
   const fileInputRef = useRef(null);
 
@@ -177,6 +184,7 @@ const Profile = () => {
             <div
               id="User-Profile-Pic"
               className="d-flex flex-column justify-content-center align-items-center w-100 pt-4  mb-4"  style={{ background: selectedGradient }}
+              onClick={changeGradient}
             >
               {/* <img id="User-Profile-Picture" src={PIC} alt="User Image" /> */}
               <input
@@ -201,22 +209,6 @@ const Profile = () => {
               >
                 Change Image
               </button>
-              <button id="User-Profile-Picture-Upload"
-                className="mt-1 mb-3">
-                Background Gradients
-              </button>
-              <div className="mt-4">
-          <select
-            className="p-2 rounded text-gray-700"
-            onChange={(e) => setSelectedGradient(e.target.value)}
-          >
-            {gradients.map((gradient, index) => (
-              <option key={index} value={gradient.colors}>
-                {gradient.name}
-              </option>
-            ))}
-          </select>
-        </div>
             </div>
             {/* Basic details */}
             <div className="User-Basic details-Main w-100">

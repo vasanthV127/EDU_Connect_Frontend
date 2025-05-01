@@ -37,12 +37,14 @@ function EduconnectLogin() {
     setShowValidationError(false);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_Backend_API_URL
-      }/api/auth/signin`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: loginEmail, password: loginPassword }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_Backend_API_URL}/api/auth/signin`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: loginEmail, password: loginPassword }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Login failed");
@@ -64,14 +66,10 @@ function EduconnectLogin() {
         alert("Your session has expired. Please log in again.");
         navigate("/"); // Redirect to login page
       }, 1200000); // 20 minutes
-
+      setIsLoading(false);
+      if (data.roles == "ROLE_ADMIN") navigate("/admin");
+      else navigate("/home");
       // Show loader for 5 seconds before navigation
-      setTimeout(() => {
-        setIsLoading(false);
-      
-        if (data.roles == "ROLE_ADMIN") navigate("/admin");
-        else navigate("/home");
-      }, 5000);
     } catch (error) {
       console.error("Error:", error.message);
       // Show error message after 5 seconds of loading
@@ -87,9 +85,23 @@ function EduconnectLogin() {
   return (
     <div>
       {isLoading && <Loader />}
-      {showError && <LoginError message="Please try again" description="Wrong password or contact admin" />}
-      {showValidationError && <LoginError message="Fill the required fields" description="Email and password are required" />}
-      <div id="a" className="container-fluid" style={{ display: isLoading ? 'none' : 'block' }}>
+      {showError && (
+        <LoginError
+          message="Please try again"
+          description="Wrong password or contact admin"
+        />
+      )}
+      {showValidationError && (
+        <LoginError
+          message="Fill the required fields"
+          description="Email and password are required"
+        />
+      )}
+      <div
+        id="a"
+        className="container-fluid"
+        style={{ display: isLoading ? "none" : "block" }}
+      >
         <div id="EdcLogin-Main-Row-1" className="row">
           <div id="EdcLogin-Main-col-1" className="col">
             <div

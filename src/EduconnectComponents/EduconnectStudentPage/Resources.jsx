@@ -12,6 +12,7 @@ import "./Resources.css";
 import Loader from "../EduconnectLoginPage/Loader";
 import LoginError from "../EduconnectLoginPage/LoginError";
 import Notification from "./Notification";
+import { Grid } from "@mui/material";
 
 const Resources = () => {
   const [resources, setResources] = useState([]);
@@ -138,7 +139,7 @@ const Resources = () => {
       {/* Resource - Cards - Main */}
       <div id="ResCard-main" className="container-fluid">
         <div id="ResContentWrapper" className="row">
-          <div id="ResContent" className="col-12 d-flex">
+          <div id="ResContent" className="col-12">
             <Box id="ResBox">
               <Typography
                 id="EducRes-Title"
@@ -146,9 +147,9 @@ const Resources = () => {
               >
                 Learning Resources
               </Typography>
-              <Box
+              {/* <Box
                 id="ResGrid"
-                className=" col -12 d-flex gap -2"
+                className="row gap-3"
               >
                 {resources.map((resource, index) => (
                   <Card
@@ -208,7 +209,88 @@ const Resources = () => {
                     </CardActions>
                   </Card>
                 ))}
-              </Box>
+              </Box> */}
+              <Grid container spacing={3} justifyContent="center">
+                {resources.map((resource, index) => (
+                  <Grid
+                    item
+                    key={resource.id}
+                    xs={12} // 1 card per row on extra-small screens
+                    sm={6} // 2 cards per row on small screens
+                    md={4} // 3 cards per row on medium screens
+                    lg={3} // 4 cards per row on large+ screens
+                  >
+                    <Card
+                      id={`ResCard-${resource.id}`}
+                      variant="outlined"
+                      sx={{
+                        background:
+                          gradientColors[index % gradientColors.length],
+                        animation: `fadeIn 0.5s ease-out forwards`,
+                        animationDelay: `${index * 0.1}s`,
+                        height: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <CardContent>
+                        <Typography
+                          id={`ResCardTitle-${resource.id}`}
+                          variant="h6"
+                          gutterBottom
+                        >
+                          {resource.title}
+                        </Typography>
+                        <Divider id={`ResCardDivider1-${resource.id}`} />
+                        <Typography
+                          id={`ResCardDescription-${resource.id}`}
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{ mt: 1 }}
+                        >
+                          {resource.description}
+                        </Typography>
+                        <Typography
+                          id={`ResCardUpload-${resource.id}`}
+                          variant="body2"
+                          sx={{ mt: 2 }}
+                        >
+                          Uploaded by: {resource.uploadedByName}
+                          <br />
+                          Semester: {resource.semester}
+                        </Typography>
+                      </CardContent>
+
+                      <Divider id={`ResCardDivider2-${resource.id}`} />
+
+                      <CardActions
+                        id={`ResCardActions-${resource.id}`}
+                        sx={{ justifyContent: "center" }}
+                      >
+                        <Button
+                          id={`ResCardBtnDownload-${resource.id}`}
+                          variant="contained"
+                          color="primary"
+                          size="small"
+                          onClick={() => handleDownload(resource.fileUrl)}
+                        >
+                          Download
+                        </Button>
+                        <Button
+                          id={`ResCardBtnView-${resource.id}`}
+                          variant="outlined"
+                          color="primary"
+                          size="small"
+                          onClick={() => handleView(resource.fileUrl)}
+                        >
+                          View
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
             </Box>
           </div>
         </div>

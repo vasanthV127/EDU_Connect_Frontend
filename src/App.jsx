@@ -18,6 +18,7 @@ import EduconnectAdmin from "./EduconnectComponents/EduconnectTeacherPage/Educon
 import ModuleManagement from "./EduconnectComponents/EduconnectTeacherPage/ModuleManagement";
 import Conversation from "./EduconnectComponents/EduconnectConversation/Conversation";
 import AddStudents from "./EduconnectComponents/EduconnectTeacherPage/AddStudents";
+import ModifyStudents from "./EduconnectComponents/EduconnectTeacherPage/ModifyStudents";
 function App() {
   return (
     <Router>
@@ -30,7 +31,7 @@ function App() {
         
         <Route path="/con" element={<Conversation/>} />
         <Route path="/add" element={<AddStudents/>} />
-        
+        <Route path="/u" element={<ModifyStudents/>} />
        
 
 

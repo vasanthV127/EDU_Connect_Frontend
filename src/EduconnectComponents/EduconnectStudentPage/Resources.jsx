@@ -156,7 +156,7 @@ const Resources = () => {
                     sm: "repeat(2, 1fr)", // 2 columns on small screens
                     md: "repeat(4, 1fr)", // 4 columns on medium and larger screens
                   },
-                  gap: 2,
+                  gap: 1.5,
                   padding: 0,
                 }}
               >

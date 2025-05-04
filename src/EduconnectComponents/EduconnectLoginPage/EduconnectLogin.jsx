@@ -70,7 +70,7 @@ function EduconnectLogin() {
       setIsLoading(false);
       
       if (data.roles == "ROLE_ADMIN") navigate("/admin");
-      else navigate("/home");
+      else navigate("/");
       // Show loader for 5 seconds before navigation
     } catch (error) {
       console.error("Error:", error.message);

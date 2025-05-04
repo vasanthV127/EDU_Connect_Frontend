@@ -5,7 +5,7 @@ import Notification from "../EduconnectStudentPage/Notification";
 import LoginError from "../EduconnectLoginPage/LoginError";
 import Loader from "../EduconnectLoginPage/Loader";
 
-const ResourceUpload = ({ teacherId }) => {
+const ResourceUpload = () => {
   const [resourceData, setResourceData] = useState({
     moduleId: "",
     title: "",
@@ -65,6 +65,7 @@ const ResourceUpload = ({ teacherId }) => {
       const response = await makeAuthenticatedFileUpload(`/teacher/upload/${resourceData.moduleId}`, formData);
       showNotification("Resource Uploaded", "Resource has been successfully uploaded!", "success");
       setResourceData({ moduleId: "", title: "", description: "", file: null });
+      
     } catch (error) {
       showNotification("Error", "Failed to upload resource: " + (error.response?.data?.message || error.message), "error");
     } finally {

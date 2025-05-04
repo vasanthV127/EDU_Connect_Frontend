@@ -19,10 +19,7 @@
 
 /* Main Content */
 #ResCard-main {
-  flex: 1;
   background-color: #000000;
-  display: flex;
-  justify-content: center;
 }
 
 #ResContentWrapper {
@@ -53,26 +50,26 @@
   width: 100%;
 } */
 
-#ResCardTitle[id^="ResCardTitle-"] {
+#ResCardTitle{
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 25px;
   color: black;
 }
 
-#ResCardDescription[id^="ResCardDescription-"] {
+#ResCardDescription {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   color: black;
 }
 
-#ResCardUpload[id^="ResCardUpload-"] {
+#ResCardUpload {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
 }
 
-#ResCardBtnDownload[id^="ResCardBtnDownload-"],
-#ResCardBtnView[id^="ResCardBtnView-"] {
+#ResCardBtnDownload,
+#ResCardBtnView {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
 }

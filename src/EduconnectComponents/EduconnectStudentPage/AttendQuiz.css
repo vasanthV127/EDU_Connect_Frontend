@@ -1,6 +1,7 @@
 /* Main Container */
 #EduQuiz-main {
   box-sizing: border-box;
+  
 }
 
 #QuizContainer {
@@ -35,6 +36,7 @@
   background-color: #000000;
   display: flex;
   justify-content: center;
+  
 }
 
 #QuizContentWrapper {
@@ -75,6 +77,8 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   width: 100%;
   margin-bottom: 20px;
+  min-width: 1000px;
+  min-height: 150px;
 }
 
 /* Question Text */

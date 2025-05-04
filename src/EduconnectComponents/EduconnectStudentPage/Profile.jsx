@@ -46,13 +46,13 @@ const Profile = () => {
   const [image, setImage] = useState(PIC);
   const fileInputRef = useRef(null);
 
-  const BACKEND_URL = "http://192.168.137.1:8100";
+  const BACKEND_URL = import.meta.env.VITE_Backend_API_URL;
 
   useEffect(() => {
     const userString = localStorage.getItem("user");
     if (userString) {
       const user = JSON.parse(userString);
-      console.log("User from localStorage:", user);
+
       setUserData({
         username: user.username.split("@")[0],
         email: user.username,
@@ -77,7 +77,6 @@ const Profile = () => {
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
-      console.log("Selected file:", file.name, file.type, file.size);
       const reader = new FileReader();
       reader.onloadend = () => {
         setImage(reader.result);
@@ -92,7 +91,7 @@ const Profile = () => {
           formData
         );
 
-        showNotification("Success", response.message, "success");
+        showNotification("Success", "Updated the Profile Image ", "success");
 
         const user = JSON.parse(localStorage.getItem("user"));
         const profileImageUrl = response.message.split(": ")[1];

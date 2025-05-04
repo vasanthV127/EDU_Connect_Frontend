@@ -68,6 +68,7 @@ function EduconnectLogin() {
         navigate("/"); // Redirect to login page
       }, 1200000); // 20 minutes
       setIsLoading(false);
+      
       if (data.roles == "ROLE_ADMIN") navigate("/admin");
       else navigate("/home");
       // Show loader for 5 seconds before navigation

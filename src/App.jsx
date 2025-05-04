@@ -9,7 +9,7 @@ import LoginError from "./EduconnectComponents/EduconnectLoginPage/LoginError";
 import AttendQuiz from "./EduconnectComponents/EduconnectStudentPage/AttendQuiz";
 import QuizList from "./EduconnectComponents/EduconnectStudentPage/QuizList";
 import ModuleDetail from "./EduconnectComponents/EduconnectStudentPage/ModuleDetail";
-import Dashboard from "./EduconnectComponents/EduconnectStudentPage/DashBoard";
+
 import ModuleCreation from "./EduconnectComponents/EduconnectTeacherPage/ModuleCreation";
 import ResourceUpload from "./EduconnectComponents/EduconnectTeacherPage/ResourceUpload";
 import QuizManager from "./EduconnectComponents/EduconnectTeacherPage/QuizManager";
@@ -23,11 +23,11 @@ function App() {
     <Router>
       <Routes>
         {/* Public Route */}
-        <Route path="/" element={<EduconnectLogin />} />
+        <Route path="/login" element={<EduconnectLogin />} />
         
          
         <Route path="/module/:moduleId" element={<ModuleDetail />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        
         <Route path="/con" element={<Conversation/>} />
         <Route path="/add" element={<AddStudents/>} />
         
@@ -41,7 +41,7 @@ function App() {
           element={
             <PrivateRoute> 
               <Routes>
-                <Route path="/home" element={<EduconnectStudent/>}/>
+                <Route path="/" element={<EduconnectStudent/>}/>
                 <Route path="/quizzes" element={<QuizList />} />
                 <Route path="/quiz/:quizId" element={<AttendQuiz />} />
                 <Route path="/admin" element={<EduconnectAdmin/>} />

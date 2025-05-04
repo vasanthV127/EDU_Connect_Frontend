@@ -1,93 +1,114 @@
-/* Resources.css */
-#EduconnectHS-main {
+/* #EduconnectHS-main {
   box-sizing: border-box;
-}
+} */
+
 #EduRes-Logo-row {
   height: 70px;
   background-color: black;
 }
+
 #EduRes-Logo-col {
   cursor: pointer;
   color: white;
-  /* font-family: "Montserrat", serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 25px; */
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 32px;
   letter-spacing: 1.2px;
-  /* background: radial-gradient(
-      circle,
-      rgba(2, 0, 36, 1) 10%,
-      rgba(9, 9, 117, 1) 44%,
-      rgba(9, 9, 121, 1) 55%,
-      rgba(8, 39, 141, 1) 72%,
-      rgba(7, 62, 156, 1) 78%,
-      rgba(6, 82, 169, 1) 86%,
-      rgba(2, 160, 221, 1) 98%,
-      rgba(0, 212, 255, 1) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; */
 }
+
+/* Main Content */
 #ResCard-main {
-  min-height: 100vh;
+  flex: 1;
   background-color: #000000;
+  display: flex;
+  justify-content: center;
 }
-/* .resources-container {
+
+#ResContentWrapper {
+  margin: 0 auto;
+  padding: 20px 0;
   min-height: 100vh;
-  background-color: #000000;
+}
+
+/* #ResContent {
+  min-height: 100vh;
+
 } */
+
 #EducRes-Title {
-  font-family: "Poppins", serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 30px;
   color: white;
+  text-align: center;
+  margin: 30px 0;
 }
-#ResCard-title{
-  font-family: "Poppins", serif;
+
+/* #ResBox {
+  width: 100%;
+} */
+
+#ResGrid {
+  width: 100%;
+}
+
+#ResCardTitle[id^="ResCardTitle-"] {
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 25px;
   color: black;
 }
-#ResCard-Description{
-  font-family: "Poppins", serif;
+
+#ResCardDescription[id^="ResCardDescription-"] {
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   color: black;
 }
-#ResCard-Upload{
-  font-family: "Poppins", serif;
+
+#ResCardUpload[id^="ResCardUpload-"] {
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
 }
-#ResCard-btn-download{
-  font-family: "Poppins", serif;
+
+#ResCardBtnDownload[id^="ResCardBtnDownload-"],
+#ResCardBtnView[id^="ResCardBtnView-"] {
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
 }
-#ResCard-btn-view{
-  font-family: "Poppins", serif;
-  font-weight: 300;
-}
-#EduRes-footer-row{
-  height: 70px;
-  background-color: black;
-}
-#EduRes-footer-col{
-  font-family: "Poppins", serif;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 12px;
-  color: white;
-  opacity: 0.7;
-}
+
 /* Loading spinner styles */
-.loading-container {
+#ResLoadingContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: #000000;
+  width: 100%;
+}
+
+#ResErrorMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000000;
+  width: 100%;
+}
+
+/* Footer */
+#EduRes-footer-row {
+  height: 70px;
+  background-color: black;
+}
+
+#EduRes-footer-col {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 12px;
+  color: white;
+  opacity: 0.7;
 }
 
 @keyframes spin {
@@ -96,7 +117,7 @@
   }
 }
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -105,4 +126,63 @@
     opacity: 1;
     transform: translateY(0);
   }
+} */
+
+/* @media (max-width: 768px) {
+  #EduRes-Logo-col {
+    font-size: 24px;
+  }
+
+  #EducRes-Title {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+
+  #ResContentWrapper {
+    padding: 10px;
+  }
+
+  #ResCardTitle[id^="ResCardTitle-"] {
+    font-size: 20px;
+  }
+
+  #ResCardDescription[id^="ResCardDescription-"] {
+    font-size: 14px;
+  }
+
+  #ResCardUpload[id^="ResCardUpload-"] {
+    font-size: 12px;
+  }
+
+  #ResCardBtnDownload[id^="ResCardBtnDownload-"],
+  #ResCardBtnView[id^="ResCardBtnView-"] {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 }
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  #EduRes-Logo-col {
+    font-size: 28px;
+  }
+
+  #EducRes-Title {
+    font-size: 28px;
+  }
+
+  #ResContentWrapper {
+    padding: 15px;
+  }
+
+  #ResCardTitle[id^="ResCardTitle-"] {
+    font-size: 22px;
+  }
+
+  #ResCardDescription[id^="ResCardDescription-"] {
+    font-size: 15px;
+  }
+
+  #ResCardUpload[id^="ResCardUpload-"] {
+    font-size: 13px;
+  }
+} */

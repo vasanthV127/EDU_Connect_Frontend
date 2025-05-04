@@ -8,7 +8,7 @@ import EduconnectResource from "./EduconnectResource";
 import EduconnectHS from "./EduconnectHS";
 import EduconnectHome from "./EduconnectHome";
 import EduconnectQuizPortal from "./EduconnectQuizPortal";
-import EduconnectAnc from "./EduconnectAnc";
+
 import Announcements from "./Announcements";
 import Resources from "./Resources";
 import Profile from "./Profile";

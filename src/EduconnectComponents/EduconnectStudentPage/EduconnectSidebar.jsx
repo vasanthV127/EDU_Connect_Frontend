@@ -93,7 +93,7 @@ function EduconnectSidebar({ setActivePage }) {
 
   const handleLogout = () => {
     logout();
-    navigate("/");
+    navigate("/login");
   };
 
   // Fetch announcements on mount if token exists

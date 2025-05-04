@@ -91,7 +91,7 @@ function Sidebar({ setActivePage }) {
 
   const handleLogout = () => {
     logout();
-    navigate("/");
+    navigate("/login");
   };
 
   useEffect(() => {

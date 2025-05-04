@@ -57,6 +57,7 @@ function EduconnectLogin() {
         username: data.username,
         roles: data.roles,
         semester: data.semester,
+        profileImageUrl:data.profileImageUrl
       });
 
       // Set a timeout to delete the token after 20 minutes (1200000 milliseconds)

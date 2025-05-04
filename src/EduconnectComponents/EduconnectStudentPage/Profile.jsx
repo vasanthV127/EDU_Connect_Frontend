@@ -58,6 +58,7 @@ const Profile = () => {
         email: user.username,
       });
       setPasswordData((prev) => ({ ...prev, email: user.username }));
+
       const imageUrl = user.profileImageUrl
         ? `${BACKEND_URL}/${user.profileImageUrl}`
         : PIC;

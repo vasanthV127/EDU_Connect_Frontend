@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
+import React from "react";
 import EduconnectLogin from "./EduconnectComponents/EduconnectLoginPage/EduconnectLogin";
 import PrivateRoute from "./services/PrivateRoute";
 import EduconnectStudent from "./EduconnectComponents/EduconnectStudentPage/EduconnectStudent";

@@ -1,16 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { makeAuthenticatedPutRequest, makeAuthenticatedRequest } from "../../services/auth.service";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Typography from "@mui/joy/Typography";
-import Table from "@mui/joy/Table";
-import Modal from "@mui/joy/Modal";
-import ModalDialog from "@mui/joy/ModalDialog";
-import FormControl from "@mui/joy/FormControl";
-import FormLabel from "@mui/joy/FormLabel";
-import Input from "@mui/joy/Input";
 import Notification from "../EduconnectStudentPage/Notification";
-import "./ModifyStudents.css";
 
 const ModifyStudents = () => {
   const [students, setStudents] = useState([]);
@@ -26,27 +16,18 @@ const ModifyStudents = () => {
 
   const showNotification = (title, description, type) => {
     setNotification({ title, description, type });
-  };
-
-  const closeNotification = () => {
-    setNotification(null);
+    setTimeout(() => setNotification(null), 3000);
   };
 
   const fetchStudents = useCallback(async () => {
     try {
-      const userString = localStorage.getItem("user");
-      const teacherId = JSON.parse(userString).id;
-      const data = await makeAuthenticatedRequest(`/teacher/students?teacherId=${teacherId}`);
+      const user = JSON.parse(localStorage.getItem("user"));
+      const data = await makeAuthenticatedRequest(`/teacher/students?teacherId=${user.id}`);
       setStudents(data);
       setLoading(false);
       showNotification("Success", "Students loaded successfully", "success");
     } catch (err) {
-      console.error("Failed to fetch students:", err.response?.data, err.message);
-      showNotification(
-        "Error",
-        err.response?.data?.message || "Failed to fetch students",
-        "error"
-      );
+      showNotification("Error", err.response?.data?.message || "Failed to fetch students", "error");
       setLoading(false);
     }
   }, []);
@@ -57,11 +38,7 @@ const ModifyStudents = () => {
 
   const handleEditClick = (student) => {
     setSelectedStudent(student);
-    setFormData({
-      name: student.name || "",
-      email: student.email || "",
-      semester: student.semester || "",
-    });
+    setFormData({ name: student.name || "", email: student.email || "", semester: student.semester || "" });
     setFormErrors({ name: "", email: "", semester: "" });
     setEditModalOpen(true);
   };
@@ -77,26 +54,18 @@ const ModifyStudents = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Basic validation
     if (name === "name") {
-      setFormErrors((prev) => ({
-        ...prev,
-        name: value.trim() ? "" : "Name is required",
-      }));
+      setFormErrors((prev) => ({ ...prev, name: value.trim() ? "" : "Name is required" }));
     } else if (name === "email") {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       setFormErrors((prev) => ({
         ...prev,
-        email: emailRegex.test(value) ? "" : "Invalid email format",
+        email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "" : "Invalid email format",
       }));
     } else if (name === "semester") {
       const semester = parseInt(value);
       setFormErrors((prev) => ({
         ...prev,
-        semester:
-          value === "" || (semester >= 1 && semester <= 8)
-            ? ""
-            : "Semester must be between 1 and 8",
+        semester: value === "" || (semester >= 1 && semester <= 8) ? "" : "Semester must be between 1 and 8",
       }));
     }
   };
@@ -119,17 +88,13 @@ const ModifyStudents = () => {
     }
 
     try {
-      const userString = localStorage.getItem("user");
-      const teacherId = JSON.parse(userString).id;
+      const user = JSON.parse(localStorage.getItem("user"));
       const payload = {
         name: formData.name,
         email: formData.email,
         semester: formData.semester ? parseInt(formData.semester) : null,
       };
-      const response = await makeAuthenticatedPutRequest(
-        `/teacher/students/${selectedStudent.id}?teacherId=${teacherId}`,
-        payload
-      );
+      await makeAuthenticatedPutRequest(`/teacher/students/${selectedStudent.id}?teacherId=${user.id}`, payload);
       setStudents((prev) =>
         prev.map((student) =>
           student.id === selectedStudent.id
@@ -140,217 +105,197 @@ const ModifyStudents = () => {
       handleModalClose();
       showNotification("Success", "Student updated successfully", "success");
     } catch (err) {
-      console.error("Failed to update student:", err.response?.data, err.message);
-      showNotification(
-        "Error",
-        err.response?.data?.message || "Failed to update student",
-        "error"
-      );
+      showNotification("Error", err.response?.data?.message || "Failed to update student", "error");
     }
-  };
-
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSemesterChange = (e) => {
-    setSelectedSemester(e.target.value);
   };
 
   const filteredStudents = students.filter((student) => {
     const matchesSearch =
-      (student.name && student.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (student.email && student.email.toLowerCase().includes(searchQuery.toLowerCase()));
-    const matchesSemester =
-      selectedSemester === "All" ||
-      (student.semester && student.semester.toString() === selectedSemester);
+      (student.name?.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (student.email?.toLowerCase().includes(searchQuery.toLowerCase()));
+    const matchesSemester = selectedSemester === "All" || student.semester?.toString() === selectedSemester;
     return matchesSearch && matchesSemester;
   });
 
   if (loading) {
     return (
-      <div id="StudentsLoadingContainer">
-        <Typography id="StudentsLoading">Loading...</Typography>
+      <div className="vh-100 bg-dark d-flex align-items-center justify-content-center">
+        <p className="text-white h5">Loading...</p>
       </div>
     );
   }
 
   return (
-    <div id="StudentsContainer">
-      <div id="EduStudents-Logo-row" className="container-fluid text-white">
-        <div id="EduStudents-Logo-col" className="col-6 d-flex justify-content-start align-items-center ps-4">
-          EDUCONNECT
-        </div>
-      </div>
+    <div className="bg-dark text-white min-vh-100">
+      <header className="bg-dark py-3 px-4">
+        <h1 className="h4 font-weight-bold">EDUCONNECT</h1>
+      </header>
 
-      <div id="Students-main" className="container-fluid">
-        <div id="StudentsContentWrapper" className="row">
-          <div id="StudentsContent" className="col-12 d-flex flex-column align-items-center">
-            <Box id="StudentsBox" sx={{ width: "100%", backgroundColor: "#000000" }}>
-              <Typography id="EduStudents-Title" sx={{ color: "#ffffff", textAlign: "center" }}>
-                Student Management
-              </Typography>
-              <div id="StudentsFilters">
-                <FormControl id="StudentsSearchControl">
-                  <FormLabel id="StudentsSearchLabel">Search by Name or Email</FormLabel>
-                  <Input
-                    id="StudentsSearchInput"
-                    value={searchQuery}
-                    onChange={handleSearchChange}
-                    placeholder="Enter name or email"
-                  />
-                </FormControl>
-                <FormControl id="StudentsSemesterControl">
-                  <FormLabel id="StudentsSemesterLabel">Filter by Semester</FormLabel>
-                  <select
-                    id="StudentsSemesterFilter"
-                    value={selectedSemester}
-                    onChange={handleSemesterChange}
-                  >
-                    <option value="All">All</option>
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
-                      <option key={sem} value={sem}>{sem}</option>
-                    ))}
-                  </select>
-                </FormControl>
-              </div>
-              <Table
-                id="StudentsTable"
-                sx={{ width: "100%", color: "#ffffff" }}
-                stripe="odd"
-                hoverRow
-              >
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Semester</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredStudents.map((student) => (
-                    <tr key={student.id}>
-                      <td>{student.id}</td>
-                      <td>{student.name || "N/A"}</td>
-                      <td>{student.email || "N/A"}</td>
-                      <td>{student.semester || "N/A"}</td>
-                      <td>
-                        <Button
-                          id={`StudentsEditBtn-${student.id}`}
-                          variant="outlined"
-                          color="neutral"
-                          onClick={() => handleEditClick(student)}
-                        >
-                          Edit
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-              {filteredStudents.length === 0 && (
-                <Typography id="StudentsNoResults" sx={{ color: "#ffffff", textAlign: "center", my: 4 }}>
-                  No students found.
-                </Typography>
-              )}
-            </Box>
+      <main className="container py-4">
+        <h2 className="h3 text-center mb-4 animate__animated animate__fadeIn">Student Management</h2>
+        <div className="row g-3 mb-4">
+          <div className="col-md-6">
+            <label htmlFor="searchInput" className="form-label">Search by Name or Email</label>
+            <input
+              type="text"
+              id="searchInput"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Enter name or email"
+              className="form-control bg-dark text-white border-secondary"
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="semesterFilter" className="form-label">Filter by Semester</label>
+            <select
+              id="semesterFilter"
+              value={selectedSemester}
+              onChange={(e) => setSelectedSemester(e.target.value)}
+              className="form-select bg-dark text-white border-secondary"
+            >
+              <option value="All">All</option>
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
+                <option key={sem} value={sem}>{sem}</option>
+              ))}
+            </select>
           </div>
         </div>
-      </div>
 
-      <Modal open={editModalOpen} onClose={handleModalClose}>
-        <ModalDialog id="StudentsModalDialog">
-          <Typography id="StudentsModalTitle" level="h2">
-            Edit Student
-          </Typography>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            <FormControl id="StudentsNameControl" error={!!formErrors.name}>
-              <FormLabel id="StudentsNameLabel">Name</FormLabel>
-              <Input
-                id="StudentsNameInput"
-                name="name"
-                value={formData.name}
-                onChange={handleFormChange}
-                placeholder="Enter name"
-              />
-              {formErrors.name && (
-                <Typography id="StudentsNameError" color="danger" sx={{ fontSize: "sm" }}>
-                  {formErrors.name}
-                </Typography>
-              )}
-            </FormControl>
-            <FormControl id="StudentsEmailControl" error={!!formErrors.email}>
-              <FormLabel id="StudentsEmailLabel">Email</FormLabel>
-              <Input
-                id="StudentsEmailInput"
-                name="email"
-                value={formData.email}
-                onChange={handleFormChange}
-                placeholder="Enter email"
-              />
-              {formErrors.email && (
-                <Typography id="StudentsEmailError" color="danger" sx={{ fontSize: "sm" }}>
-                  {formErrors.email}
-                </Typography>
-              )}
-            </FormControl>
-            <FormControl id="StudentsSemesterFormControl" error={!!formErrors.semester}>
-              <FormLabel id="StudentsSemesterFormLabel">Semester</FormLabel>
-              <Input
-                id="StudentsSemesterInput"
-                name="semester"
-                type="number"
-                value={formData.semester}
-                onChange={handleFormChange}
-                placeholder="Enter semester (1-8)"
-              />
-              {formErrors.semester && (
-                <Typography id="StudentsSemesterError" color="danger" sx={{ fontSize: "sm" }}>
-                  {formErrors.semester}
-                </Typography>
-              )}
-            </FormControl>
-            <Box id="StudentsModalActions" sx={{ display: "flex", gap: 1, justifyContent: "flex-end", mt: 2 }}>
-              <Button
-                id="StudentsCancelBtn"
-                variant="outlined"
-                color="neutral"
-                onClick={handleModalClose}
-              >
-                Cancel
-              </Button>
-              <Button
-                id="StudentsSaveBtn"
-                variant="solid"
-                color="primary"
-                onClick={handleUpdateStudent}
-                disabled={!isFormValid()}
-              >
-                Save
-              </Button>
-            </Box>
-          </Box>
-        </ModalDialog>
-      </Modal>
+        <div className="table-responsive">
+          <table className="table table-dark table-hover animate__animated animate__fadeIn">
+            <thead>
+              <tr>
+                <th scope="col" style={{ width: "10%" }}>ID</th>
+                <th scope="col" style={{ width: "25%" }}>Name</th>
+                <th scope="col" style={{ width: "35%" }}>Email</th>
+                <th scope="col" style={{ width: "15%" }}>Semester</th>
+                <th scope="col" style={{ width: "15%" }}>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredStudents.map((student) => (
+                <tr key={student.id}>
+                  <td>{student.id}</td>
+                  <td>{student.name || "N/A"}</td>
+                  <td className="text-truncate" style={{ maxWidth: "200px" }}>{student.email || "N/A"}</td>
+                  <td>{student.semester || "N/A"}</td>
+                  <td>
+                    <button
+                      onClick={() => handleEditClick(student)}
+                      className="btn btn-outline-primary btn-sm"
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {filteredStudents.length === 0 && (
+          <p className="text-center h5 mt-4">No students found.</p>
+        )}
+      </main>
+
+      {editModalOpen && (
+        <div className="modal fade show d-block" tabIndex="-1" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Edit Student</h5>
+                <button type="button" className="btn-close" onClick={handleModalClose}></button>
+              </div>
+              <div className="modal-body">
+                <div className="mb-3">
+                  <label htmlFor="nameInput" className="form-label">Name</label>
+                  <input
+                    type="text"
+                    id="nameInput"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleFormChange}
+                    placeholder="Enter name"
+                    className={`form-control ${formErrors.name ? "is-invalid" : ""}`}
+                  />
+                  {formErrors.name && <div className="invalid-feedback">{formErrors.name}</div>}
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="emailInput" className="form-label">Email</label>
+                  <input
+                    type="email"
+                    id="emailInput"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    placeholder="Enter email"
+                    className={`form-control ${formErrors.email ? "is-invalid" : ""}`}
+                  />
+                  {formErrors.email && <div className="invalid-feedback">{formErrors.email}</div>}
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="semesterInput" className="form-label">Semester</label>
+                  <input
+                    type="number"
+                    id="semesterInput"
+                    name="semester"
+                    value={formData.semester}
+                    onChange={handleFormChange}
+                    placeholder="Enter semester (1-8)"
+                    className={`form-control ${formErrors.semester ? "is-invalid" : ""}`}
+                  />
+                  {formErrors.semester && <div className="invalid-feedback">{formErrors.semester}</div>}
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={handleModalClose}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={handleUpdateStudent}
+                  disabled={!isFormValid()}
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {notification && (
         <Notification
           title={notification.title}
           description={notification.description}
           type={notification.type}
-          onClose={closeNotification}
+          onClose={() => setNotification(null)}
         />
       )}
 
-      <footer>
-        <div id="EduStudents-footer-row" className="container-fluid">
-          <div id="EduStudents-footer-col" className="col-12 d-flex flex-column justify-content-center align-items-center mt-4 mb-4">
-            © {new Date().getFullYear()} EDUConnect. All rights reserved.
-          </div>
-        </div>
+      <footer className="bg-dark py-3 text-center text-secondary">
+        © {new Date().getFullYear()} EDUConnect. All rights reserved.
       </footer>
+
+      <style jsx>{`
+        @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
+        @import url('https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css');
+
+        .form-select, .form-control {
+          background-color: #212529;
+          border-color: #495057;
+          color: #fff;
+        }
+
+        .form-select:focus, .form-control:focus {
+          border-color: #0d6efd;
+          box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+      `}</style>
     </div>
   );
 };

@@ -24,7 +24,7 @@ import { makeAuthenticatedRequest } from "../../services/auth.service";
 
 function Sidebar({ setActivePage }) {
   const navigate = useNavigate();
-  const { logout } = useContext(AuthContext);
+  const { logout  } = useContext(AuthContext);
   const [isSidebarVisible, setSidebarVisible] = useState(false);
   const [notificationCount, setNotificationCount] = useState(0);
   const sidebarRef = useRef(null);

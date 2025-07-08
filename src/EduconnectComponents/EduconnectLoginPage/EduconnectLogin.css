@@ -89,6 +89,7 @@ input:-webkit-autofill:active {
   padding: 9px 20px;
   border-radius: 50px;
   font-family: "Poppins", serif;
+  color: rgb(146, 146, 146);
   font-weight: 400;
   font-style: normal;
   transition: cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;

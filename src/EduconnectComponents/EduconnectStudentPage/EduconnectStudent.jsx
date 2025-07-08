@@ -14,7 +14,7 @@ import Resources from "./Resources";
 import Profile from "./Profile";
 
 function EduconnectStudent() {
-  const [activePage, setActivePage] = useState("Home"); // Default page
+  const [activePage, setActivePage] = useState("Resources"); // Default page
   return (
     <div>
       <aside>

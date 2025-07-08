@@ -12,7 +12,7 @@ import ModuleManagement from "./ModuleManagement";
 import AddStudents from "./AddStudents"; // New import
 
 function EduconnectAdmin() {
-  const [activePage, setActivePage] = useState("Resources"); // Default page
+  const [activePage, setActivePage] = useState("ResourceUpload"); // Default page
   const userString = localStorage.getItem("user");
   const teacherId = userString ? JSON.parse(userString).id : null;
 

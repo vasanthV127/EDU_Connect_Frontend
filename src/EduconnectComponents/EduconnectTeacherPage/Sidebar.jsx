@@ -133,10 +133,7 @@ function Sidebar({ setActivePage }) {
           )}
         </div>
         <div id="edu-nav-links">
-          <a href="#" className="sidebar-link" onClick={() => setActivePage("Home")}>
-            <RoofingOutlinedIcon style={{ fontSize: 25, color: "white" }} />
-            <span className="sidebar-text">Home</span>
-          </a>
+         
           
           {/* New Admin Links */}
           <a href="#" className="sidebar-link" onClick={() => setActivePage("ResourceUpload")}>
